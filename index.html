@@ -7,7 +7,6 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <title>Employee Payroll Tracker</title>
   <link rel="stylesheet" href="/css/style.css">
-  <script src="/js/script.js"></script>
 </head>
 
 <body> <!--  onload="collectEmployees()" -->
@@ -20,7 +19,6 @@
     <div class="card">
       <div class="card-header">
         <h2>Employee Roster</h2>
-        <p id="add"></p> <!-- add for text output depending on ok or cancel -->
       </div>
 
       <div class="card-body">
@@ -37,12 +35,12 @@
         </table>
       </div>
       <div class="card-footer">
-        <button id="add-employees-btn" onclick="collectEmployees()" class="btn">
+        <button id="add-employees-btn" class="btn"> <!-- onclick="collectEmployees()" -->
           Add Employees
         </button>
       </div>
     </div>
   </div>
-  
+  <script src="/js/script.js"></script>
 </body>
 </html>
