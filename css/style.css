@@ -129,3 +129,24 @@ button[disabled] {
     font-size: 0.8rem;
   }
 }
+
+
+.output {
+  background-color: aliceblue;
+  border-radius: 5px;
+  border-width: 1px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
+  color: hsl(206, 17%, 28%);
+  font-size: 18px;
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 30px 40px;
+}
+
+.output p {
+  border-radius: 3px;
+  border-width: 10px;
+  border-color: darkblue;
+  font-weight: bold;
+  color: darkblue;
+}

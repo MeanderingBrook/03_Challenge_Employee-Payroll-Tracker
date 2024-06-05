@@ -55,21 +55,31 @@ function populateEmpArray() {
   let employee04 = {};
   employee04.firstName = "Dale";
   employee04.lastName = "Davidson";
-  employee04.salary = 500;
+  employee04.salary = 400;
 
   employeesArray.push(employee04);
 
+  
   let employee05 = {};
 
   employee05.firstName = "Eric";
   employee05.lastName = "Elphson";
-  employee05.salary = 600;
+  employee05.salary = 500;
 
   employeesArray.push(employee05);
 
-  console.log(employeesArray);
-  console.log("function-populated array", employeesArray);
-  console.log(`Function-populated employeesArray Values: ${employeesArray}`);
+
+  let employee06 = {};
+
+  employee06.firstName = "Frederick";
+  employee06.lastName = "Ferguson";
+  employee06.salary = 600;
+
+  employeesArray.push(employee06);
+
+
+  console.log("Function-Populated Array", employeesArray);
+  console.log(`Function-populated employeesArray Values: ${JSON.stringify(employeesArray)}`);
 };
 
 // Collect employee data
@@ -91,7 +101,6 @@ const collectEmployees = function() {
   }
 
   employeesArray.push(employee);
-  console.log(`Current employeesArray Values: ${employeesArray}`);
   console.log("Current employeesArray Values:", employeesArray);
 
   if (confirm("Do you wish to add another Employee?")) {
@@ -101,7 +110,7 @@ const collectEmployees = function() {
   } else {
     empRecordComplete = true;
     console.log("User elected not to add Additional Employee.");
-    console.log(`Final employeesArray Values: ${employeesArray}`)
+    console.log("Final employeesArray Values:", employeesArray);
     return employeesArray;  // DONT THINK THIS NEEDS TO BE RETURNED SINCE ARRAY IS GLOBAL?????
   }
 }
@@ -132,15 +141,46 @@ const displayAverageSalary = function(employeesArray) {
   employeesArray.forEach(salary => {
     countSalaries += 1;  // 'var += 1' syntax recommended by Instructor, rather than 'var++'
   });
-  console.log(`Count of Employee Salaries: ${countSalaries}.`);
+  countSalaryOutput = `Count of Employee Salaries: ${countSalaries}.`;
+  // console.log(`Count of Employee Salaries: ${countSalaries}.`);
+  console.log(countSalaryOutput);
 
   sumSalary = employeesArray.reduce((i, {salary}) => i + salary, 0);  // https://stackoverflow.com/questions/16600925/how-can-i-add-a-variable-to-console-log
-  console.log(`Sum of Employee Salaries: ${currencyDollar.format(sumSalary)}.`);
+  sumSalaryOutput = `Sum of Employee Salaries: ${currencyDollar.format(sumSalary)}.`;
+  console.log(sumSalaryOutput);
 
   avgSalary = sumSalary / countSalaries;
-  console.log(`Average Employee Salary: ${currencyDollar.format(avgSalary)}.`);
+  avgSalaryOuput = `Average Employee Salary: ${currencyDollar.format(avgSalary)}.`
+  console.log(avgSalaryOuput);
 
-  console.log(`The average Employee Salary of the ${countSalaries}, recorded Salary(s) is, ${currencyDollar.format(avgSalary)}.`);
+  console.log(`The average Employee Salary of the ${countSalaries} recorded Salary(s) is, ${currencyDollar.format(avgSalary)}.`);
+
+
+  // Create HTML Elements for Calculated Function Output
+
+  // HTML Element: Count of Employee Salaries
+  const paraEmpSalary = document.createElement("p");  // Creates new <p> Element
+  const empSalaryNode = document.createTextNode(countSalaryOutput);  // Creates Text Node for paraEmpSalary
+  paraEmpSalary.appendChild(empSalaryNode);  // Appends Text Node to <p> Element
+  const countSalaryPara = document.getElementById("calcOutput");  // Finds existing Element to which to Append
+  countSalaryPara.appendChild(paraEmpSalary);  // Appends new Element to existing Element
+
+  // HTML Element: Sum of Employee Salaries
+  const paraSumSalary = document.createElement("p");  // Creates new <p> Element
+  const sumSalaryNode = document.createTextNode(sumSalaryOutput);  // Creates Text Node for paraSumSalary
+  paraSumSalary.appendChild(sumSalaryNode);  // Appends Text Node to <p> Element
+  const sumSalaryPara = document.getElementById("calcOutput");  // Finds existing Element to which to Append
+  sumSalaryPara.appendChild(paraSumSalary);  // Appends new Element to existing Element
+
+  // HTML Element: Average Employee Salary
+  const paraAvgSalary = document.createElement("p");  // Creates new <p> Element
+  const avgSalaryNode = document.createTextNode(avgSalaryOuput);  // Creates Text Node for paraAvgSalary
+  paraAvgSalary.appendChild(avgSalaryNode);  // Appends Text Node to <p> Element
+  const avgSalaryPara = document.getElementById("calcOutput");  // Finds existing Element to which to Append
+  avgSalaryPara.appendChild(paraAvgSalary);  // Appends new Element to existing Element
+
+// populateEmpArray()
+// displayAverageSalary(employeesArray)
 
 }
 
