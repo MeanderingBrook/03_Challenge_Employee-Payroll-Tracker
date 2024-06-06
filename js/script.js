@@ -11,6 +11,10 @@
 // Instead of an incrementing counter (there's nothing to count in this Use Case) I opted for a binary variable
 // to determine whether an Employee Record is complete or not (i.e., First Name, Last Name, and Salary have been input),
 // recognizing that this the framework itself is kludgey.
+// Additionally, I opted for an Element-level Function for evaluating Salary counts, rather than an Object-level Function,
+// since it is plausible under mor robust Use Cases that Employee data other than Salary might be entered, while omitting Salary itself;
+// In other circumstances, I'd ommit zero-dollar Salaries since those will skew results, but the Challenge Requirements explicitly include them
+
 
 let employeesArray = [];  // Must be Global Array
 
@@ -101,6 +105,9 @@ const collectEmployees = function() {
     employee.firstName = prompt("First Name").trim();
     employee.lastName = prompt("Last Name").trim();
     employee.salary = parseFloat(prompt("Salary").trim());  // Converts User Input from String to Float
+      if (isNaN(employee.salary)) {
+        employee.salary = parseFloat(0)
+      };
     empRecordComplete = true;
   }
 
@@ -129,6 +136,7 @@ const displayAverageSalary = function(employeesArray) {
   let avgSalary = 0;
 
   // Calculate Count of Employee Salaries
+  // Salary-specific count used; alternatives, such Object.key, counts Keys not particular Elements (Salaries)
   employeesArray.forEach(salary => {
     countSalaries += 1;  // 'var += 1' syntax recommended by Instructor, rather than 'var++'
   });
@@ -264,21 +272,23 @@ const getRandomEmployee = function(employeesArray) {
   divRandomEmpNew.appendChild(headRandomEmp); // Appends new <h2> to existing <div> Element
   headRandomEmp.setAttribute("id", "headerRandomEmp");
   
-  const refRandomEmpHeader = document.querySelector('#headerRandomEmp'); // Identifies existing Header Element ID to which to Append
+  // const refRandomEmpHeader = document.querySelector('#headerRandomEmp'); // Identifies existing Header Element ID to which to Append
 
   // Create HTML Element: Random Employee Winner
   const paraRandomEmp = document.createElement("p");  // Create new Container <p> Element
   // paraRandomEmp.setAttribute("class", "output");  // Assigns Class to Element
-
   const paraRandomEmpNode = document.createTextNode(randomEmpOutput);  // Creates Text Node for paraAvgSalary
-
   paraRandomEmp.appendChild(paraRandomEmpNode);  // Appends Text Node to <p> Element
-
-  const randomEmpPara = document.getElementById("headerRandomEmp");  // Finds existing Element to which to Append
-
+  // const randomEmpPara = document.getElementById("headerRandomEmp");  // Finds existing Element to which to Append
+  const randomEmpPara = document.getElementById("randomEmp");  // Finds existing Element to which to Append
   randomEmpPara.appendChild(paraRandomEmp);  // Appends new Element to existing Element
+  paraRandomEmp.setAttribute("class", "randomemppara")
 }
 
+
+// populateEmpArray()
+// displayAverageSalary(employeesArray)
+// getRandomEmployee(employeesArray)
 
 /*
   ====================
