@@ -1,6 +1,8 @@
+// SUPERSEDED CODE
 /* ---------------------------------------------- */
 
-// SUPERSEDED CODE
+// console.log(`Function-populated employeesArray Values: ${JSON.stringify(employeesArray)}`);
+
   // THIS STILL DOESNT CATCH CANCELLED ENTRIES
   // do {
   //   employee.firstName = prompt("First Name").trim();
@@ -46,3 +48,18 @@
 //     return employeesArray;  // RETURN THIS ARRAY INSTEAD OF DECLARING AS GLOBAL?????
 //   }
 // }
+
+// Superseded for Salary-specific count; Object.key counts Keys not Elements (Salaries)
+// let numEmp = 0;
+// numEmp = Object.keys(employeesArray).length
+// console.log(numEmp);
+
+// Superseded for forEach
+// for (const salary of employeesArray) {
+//   if (salary.status !== null) countSalaries++;
+// }
+
+// Superseded for forEach
+// for (const salary of employeesArray) {
+//   if (salary.status) countSalaries += 1;
+// };
