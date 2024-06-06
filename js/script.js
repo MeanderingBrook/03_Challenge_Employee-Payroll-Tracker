@@ -1,22 +1,26 @@
 // Console Test Scripts:
-// populateEmpArray()
-// displayAverageSalary(employeesArray)
-// getRandomEmployee(employeesArray)
+    // populateEmpArray()
+    // displayAverageSalary(employeesArray)
+    // getRandomEmployee(employeesArray)
 
-// Note to Evalators: A While Loop seems inappropriate for the requested functionality, 
-// and typical attributes of While Loops, such as incrementing counters, don't have a useful place.
+// Note to Evalators: 
+// The given code that includes an octothorpe (#) in assignment of addEmployeeBtn (Line 32) prevents the button from
+// invoking the trackEmployeeData (Line 341)
+// A While Loop seems inappropriate for the requested functionality, 
+// and typical attributes of While Loops, such as incrementing counters against a limit, don't have a useful place.
 // (Were I not working from given code, and the Technical Requirement to use a While Loop, I would have opted for
-// a For Loop, or Do While Loop, or a simply ingested the User Input directly into the temporary Employee Object with an Error Check 
-// before pushing the values to employeesArray, or... etc.)
+// a For Loop, or Do While Loop, or a simply ingested the User Input directly into the temporary Employee Object
+// with an Error Check before pushing the values to employeesArray, or... etc.)
 // Instead of an incrementing counter (there's nothing to count in this Use Case) I opted for a binary variable
 // to determine whether an Employee Record is complete or not (i.e., First Name, Last Name, and Salary have been input),
 // recognizing that this the framework itself is kludgey.
 // Additionally, I opted for an Element-level Function for evaluating Salary counts, rather than an Object-level Function,
 // since it is plausible under mor robust Use Cases that Employee data other than Salary might be entered, while omitting Salary itself;
 // In other circumstances, I'd ommit zero-dollar Salaries since those will skew results, but the Challenge Requirements explicitly include them
+// Additional IDs were added to index.html Elements to allow for additional JavaScript-created Elements
 
 
-let employeesArray = [];  // Must be Global Array
+let employeesArray = [];  // Creates aggregating Object to hold all entered Employee data, MUST be Global Array
 
 // Formats Number Values as Currency ($U.S.)
 let currencyDollar = new Intl.NumberFormat('en-US', {  // https://www.freecodecamp.org/news/how-to-format-number-as-currency-in-javascript-one-line-of-code/
@@ -28,67 +32,48 @@ let currencyDollar = new Intl.NumberFormat('en-US', {  // https://www.freecodeca
 // Get a reference to the #add-employees-btn element
 const addEmployeesBtn = document.getElementById("add-employees-btn");
 
-
 // Populates employeesArray with sample data for Development
 function populateEmpArray() {
 
   let employee01 = {};  // Creates temporary Object to be pushed to employeesArray
-
   employee01.firstName = "Andrew";
   employee01.lastName = "Anderson";
   employee01.salary = 100;
-
   employeesArray.push(employee01);
 
-
   let employee02 = {};  // Creates temporary Object to be pushed to employeesArray
-  
   employee02.firstName = "Barnard";
   employee02.lastName = "Brown";
   employee02.salary = 200;
-
   employeesArray.push(employee02);
 
-
   let employee03 = {};  // Creates temporary Object to be pushed to employeesArray
-  
   employee03.firstName = "Carl";
   employee03.lastName = "Cooper";
   employee03.salary = 300;
-
   employeesArray.push(employee03);
 
-
   let employee04 = {};  // Creates temporary Object to be pushed to employeesArray
-  
   employee04.firstName = "Dale";
   employee04.lastName = "Davidson";
   employee04.salary = 400;
-
   employeesArray.push(employee04);
 
-  
   let employee05 = {};  // Creates temporary Object to be pushed to employeesArray
-
   employee05.firstName = "Eric";
   employee05.lastName = "Elphson";
   employee05.salary = 500;
-
   employeesArray.push(employee05);
 
-
   let employee06 = {};  // Creates temporary Object to be pushed to employeesArray
-
   employee06.firstName = "Frederick";
   employee06.lastName = "Ferguson";
   employee06.salary = 600;
 
   employeesArray.push(employee06);
 
-
   console.log("Function-Populated Array", employeesArray);
 };
-
 
 // Collect employee data
 // TODO: Get user input to create and return an array of employee objects
@@ -96,11 +81,10 @@ const collectEmployees = function() {
 
   console.log("collectEmployees Function Ran.")
 
-  let employee = {};  // Creates temporary Object to be pushed to employeesArray
+  let employee = {};  // Creates temporary Object to hold individual data to be pushed to employeesArray
 
-  let empRecordComplete = false;  // Employee Record (Array Object: First Name, Last Name, Salary) is NOT Complete
+  let empRecordComplete = false;  // Boolean value, Employee Record (Array Object: First Name, Last Name, Salary) is NOT Complete
 
-  // THIS WORKS FINE JUST DOESNT ADDRESS CANCELLED ENTRIES
   while (empRecordComplete === false) {
     employee.firstName = prompt("First Name").trim();
     employee.lastName = prompt("Last Name").trim();
@@ -112,25 +96,28 @@ const collectEmployees = function() {
   }
 
   employeesArray.push(employee);
+
+  // Confirms aggregated population of employeesArray to ensure User Input is progressively captured
   console.log("Current employeesArray Values:", employeesArray);
 
   if (confirm("Do you wish to add another Employee?")) {
     empRecordComplete = false;
-    console.log("User elected to add Additional Employee.");
+    console.log("User elected to add an Additional Employee.");
     collectEmployees();
   } else {
     empRecordComplete = true;
-    console.log("User elected not to add Additional Employee.");
+    console.log("User elected not to add an Additional Employee.");
     console.log("Final employeesArray Values:", employeesArray);
-    return employeesArray;  // DONT THINK THIS NEEDS TO BE RETURNED SINCE ARRAY IS GLOBAL?????
   }
+  return employeesArray;  // MUST return employeesArray to be assigned to Constant, employee, in trackEmployeeData()
 }
-
 
 // Display the average salary
 // TODO: Calculate and display the average salary
 const displayAverageSalary = function(employeesArray) {
-  
+
+  console.log({employeesArray});
+
   let countSalaries = 0;
   let sumSalary = 0;
   let avgSalary = 0;
@@ -158,9 +145,9 @@ const displayAverageSalary = function(employeesArray) {
   console.log(`The average Employee Salary of the ${countSalaries} recorded Salary(s) is, ${avgSalary}.`);
 
 
-  // Create HTML Elements for Calculated Function Output
+  // Creates HTML Elements for Calculated Function Output
 
-  // Create HTML Element: Employee Data Summary Container Div
+  // Creates HTML Element: Employee Data Summary Container Div
   const divDataSummary = document.createElement("div");  // Creates new <div> Element
   const referenceNode = document.querySelector('#cardfooter');  // Finds existing Element ID to which to Append
   referenceNode.after(divDataSummary);  // Appends new <div> to identified Element ID
@@ -168,7 +155,7 @@ const displayAverageSalary = function(employeesArray) {
   divDataSummary.setAttribute("id", "dataSummary");  // Assigns ID to <div> Element
 
 
-  // Create HTML Element: Employee Data Summary Header
+  // Creates HTML Element: Employee Data Summary Header
   const headDataSummary = document.createElement("h2");  // Creates new <h2> Element
   const headTitleNode = document.createTextNode("Employee Data Summary");  // Creates Text Node for new <h2> with Text
   headDataSummary.append(headTitleNode);  // Appends Text Node to <h2> Element
@@ -179,8 +166,8 @@ const displayAverageSalary = function(employeesArray) {
   const refDataSumHeaderNode = document.querySelector('#headerDataSummary'); // Identifies existing Header Element ID to which to Append
 
 
-  // Create HTML Element: Average Employee Salary
-  const divAvgSalary = document.createElement("div");  // Create new Container <div> Element
+  // Creates HTML Element: Average Employee Salary
+  const divAvgSalary = document.createElement("div");  // Creates new Container <div> Element
   refDataSumHeaderNode.after(divAvgSalary); // Appends new <div> to identified Element ID
   divAvgSalary.setAttribute("class", "output");
   divAvgSalary.setAttribute("id", "divAvgSalary")
@@ -201,8 +188,8 @@ const displayAverageSalary = function(employeesArray) {
   avgSalaryPara.appendChild(paraAvgSalary);  // Appends new Element to existing Element
 
 
-  // Create HTML Element: Sum of Employee Salaries
-  const divSumSalary = document.createElement("div");  // Create new Container <div> Element
+  // Creates HTML Element: Sum of Employee Salaries
+  const divSumSalary = document.createElement("div");  // Creates new Container <div> Element
   refDataSumHeaderNode.after(divSumSalary); // Appends new <div> to identified Element ID
   divSumSalary.setAttribute("class", "output");
   divSumSalary.setAttribute("id", "divSumSalary")
@@ -223,8 +210,8 @@ const displayAverageSalary = function(employeesArray) {
   sumSalaryPara.appendChild(paraSumSalary);  // Appends new Element to existing Element
 
 
-  // Create HTML Element: Count of Employee Salaries
-  const divCountSalary = document.createElement("div");  // Create new Container <div> Element
+  // Creates HTML Element: Count of Employee Salaries
+  const divCountSalary = document.createElement("div");  // Creates new Container <div> Element
   refDataSumHeaderNode.after(divCountSalary); // Appends new <div> to identified Element ID
   divCountSalary.setAttribute("class", "output");
   divCountSalary.setAttribute("id", "divCountSalary")
@@ -256,7 +243,7 @@ const getRandomEmployee = function(employeesArray) {
   console.log(randomEmpOutput);
 
 
-  // Create HTML Element: Random Employee Container Div
+  // Creates HTML Element: Random Employee Container Div
   const divRandomEmp = document.createElement("div");  // Creates new <div> Element
   const referenceNode = document.querySelector('#carddiv');  // Finds existing Element ID to which to Append
   referenceNode.after(divRandomEmp);  // Appends new <div> to identified Element ID
@@ -264,7 +251,7 @@ const getRandomEmployee = function(employeesArray) {
   divRandomEmp.setAttribute("id", "randomEmp");  // Assigns ID to Element
 
 
-  // Create HTML Element: Random Employee Header
+  // Creates HTML Element: Random Employee Header
   const headRandomEmp = document.createElement("h2");  // Creates new <h2> Element
   const headEmpNode = document.createTextNode("Random Employee Winner!");  // Creates Text Node for new <h2> with Text
   headRandomEmp.append(headEmpNode);  // Appends Text Node to <h2> Element
@@ -272,10 +259,9 @@ const getRandomEmployee = function(employeesArray) {
   divRandomEmpNew.appendChild(headRandomEmp); // Appends new <h2> to existing <div> Element
   headRandomEmp.setAttribute("id", "headerRandomEmp");
   
-  // const refRandomEmpHeader = document.querySelector('#headerRandomEmp'); // Identifies existing Header Element ID to which to Append
 
-  // Create HTML Element: Random Employee Winner
-  const paraRandomEmp = document.createElement("p");  // Create new Container <p> Element
+  // Creates HTML Element: Random Employee Winner
+  const paraRandomEmp = document.createElement("p");  // Creates new Container <p> Element
   // paraRandomEmp.setAttribute("class", "output");  // Assigns Class to Element
   const paraRandomEmpNode = document.createTextNode(randomEmpOutput);  // Creates Text Node for paraAvgSalary
   paraRandomEmp.appendChild(paraRandomEmpNode);  // Appends Text Node to <p> Element
@@ -285,10 +271,6 @@ const getRandomEmployee = function(employeesArray) {
   paraRandomEmp.setAttribute("class", "randomemppara")
 }
 
-
-// populateEmpArray()
-// displayAverageSalary(employeesArray)
-// getRandomEmployee(employeesArray)
 
 /*
   ====================
@@ -336,7 +318,10 @@ const trackEmployeeData = function() {
 
   console.table(employees);
 
+  console.log(employees);
+
   displayAverageSalary(employees);
+  
 
   console.log('==============================');
 
@@ -355,5 +340,3 @@ const trackEmployeeData = function() {
 
 // Add event listener to 'Add Employees' button
 addEmployeesBtn.addEventListener('click', trackEmployeeData);
-// addEmployeesBtn.addEventListener('click', collectEmployees);
-
