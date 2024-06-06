@@ -14,13 +14,16 @@
 
 let employeesArray = [];  // Must be Global Array
 
+// Formats Number Values as Currency ($U.S.)
 let currencyDollar = new Intl.NumberFormat('en-US', {  // https://www.freecodecamp.org/news/how-to-format-number-as-currency-in-javascript-one-line-of-code/
     style: 'currency',
     currency: 'USD',
 });
 
+
 // Get a reference to the #add-employees-btn element
 const addEmployeesBtn = document.getElementById("add-employees-btn");
+
 
 // Populates employeesArray with sample data for Development
 function populateEmpArray() {
@@ -34,7 +37,7 @@ function populateEmpArray() {
   employeesArray.push(employee01);
 
 
-  let employee02 = {};
+  let employee02 = {};  // Creates temporary Object to be pushed to employeesArray
   
   employee02.firstName = "Barnard";
   employee02.lastName = "Brown";
@@ -43,7 +46,7 @@ function populateEmpArray() {
   employeesArray.push(employee02);
 
 
-  let employee03 = {};
+  let employee03 = {};  // Creates temporary Object to be pushed to employeesArray
   
   employee03.firstName = "Carl";
   employee03.lastName = "Cooper";
@@ -52,7 +55,8 @@ function populateEmpArray() {
   employeesArray.push(employee03);
 
 
-  let employee04 = {};
+  let employee04 = {};  // Creates temporary Object to be pushed to employeesArray
+  
   employee04.firstName = "Dale";
   employee04.lastName = "Davidson";
   employee04.salary = 400;
@@ -60,7 +64,7 @@ function populateEmpArray() {
   employeesArray.push(employee04);
 
   
-  let employee05 = {};
+  let employee05 = {};  // Creates temporary Object to be pushed to employeesArray
 
   employee05.firstName = "Eric";
   employee05.lastName = "Elphson";
@@ -69,7 +73,7 @@ function populateEmpArray() {
   employeesArray.push(employee05);
 
 
-  let employee06 = {};
+  let employee06 = {};  // Creates temporary Object to be pushed to employeesArray
 
   employee06.firstName = "Frederick";
   employee06.lastName = "Ferguson";
@@ -79,12 +83,12 @@ function populateEmpArray() {
 
 
   console.log("Function-Populated Array", employeesArray);
-  console.log(`Function-populated employeesArray Values: ${JSON.stringify(employeesArray)}`);
 };
 
+
 // Collect employee data
+// TODO: Get user input to create and return an array of employee objects
 const collectEmployees = function() {
-  // TODO: Get user input to create and return an array of employee objects
 
   console.log("collectEmployees Function Ran.")
 
@@ -115,82 +119,164 @@ const collectEmployees = function() {
   }
 }
 
+
 // Display the average salary
+// TODO: Calculate and display the average salary
 const displayAverageSalary = function(employeesArray) {
-  // TODO: Calculate and display the average salary
   
   let countSalaries = 0;
   let sumSalary = 0;
   let avgSalary = 0;
 
-  // Superseded for Salary-specific count; Object.key counts Keys not Elements (Salaries)
-  // let numEmp = 0;
-  // numEmp = Object.keys(employeesArray).length
-  // console.log(numEmp);
-
-  // Superseded for forEach
-  // for (const salary of employeesArray) {
-  //   if (salary.status !== null) countSalaries++;
-  // }
-
-  // Superseded for forEach
-  // for (const salary of employeesArray) {
-  //   if (salary.status) countSalaries += 1;
-  // };
-
+  // Calculate Count of Employee Salaries
   employeesArray.forEach(salary => {
     countSalaries += 1;  // 'var += 1' syntax recommended by Instructor, rather than 'var++'
   });
-  countSalaryOutput = `Count of Employee Salaries: ${countSalaries}.`;
-  // console.log(`Count of Employee Salaries: ${countSalaries}.`);
-  console.log(countSalaryOutput);
+  countSalaryTitle = `Count of Employee Salaries: `;
+  // Console Log Output
+  console.log(countSalaryOutput = `Count of Employee Salaries: ${countSalaries}.`);
 
+  // Calculate Sum of Salaries
   sumSalary = employeesArray.reduce((i, {salary}) => i + salary, 0);  // https://stackoverflow.com/questions/16600925/how-can-i-add-a-variable-to-console-log
-  sumSalaryOutput = `Sum of Employee Salaries: ${currencyDollar.format(sumSalary)}.`;
-  console.log(sumSalaryOutput);
+  sumSalaryFormatted = currencyDollar.format(sumSalary);
+  sumSalaryTitle = `Sum of Employee Salaries: `;
+  // Console Log Output
+  console.log(sumSalaryOutput = `Sum of Employee Salaries: ${sumSalaryFormatted}.`);
 
-  avgSalary = sumSalary / countSalaries;
-  avgSalaryOuput = `Average Employee Salary: ${currencyDollar.format(avgSalary)}.`
-  console.log(avgSalaryOuput);
-
-  console.log(`The average Employee Salary of the ${countSalaries} recorded Salary(s) is, ${currencyDollar.format(avgSalary)}.`);
+  // Calculate Average Salary
+  avgSalary = currencyDollar.format(sumSalary / countSalaries);
+  avgSalaryTitle = `Average Employee Salary: `
+  // Console Log Output
+  console.log(`The average Employee Salary of the ${countSalaries} recorded Salary(s) is, ${avgSalary}.`);
 
 
   // Create HTML Elements for Calculated Function Output
 
-  // HTML Element: Count of Employee Salaries
-  const paraEmpSalary = document.createElement("p");  // Creates new <p> Element
-  const empSalaryNode = document.createTextNode(countSalaryOutput);  // Creates Text Node for paraEmpSalary
-  paraEmpSalary.appendChild(empSalaryNode);  // Appends Text Node to <p> Element
-  const countSalaryPara = document.getElementById("calcOutput");  // Finds existing Element to which to Append
-  countSalaryPara.appendChild(paraEmpSalary);  // Appends new Element to existing Element
+  // Create HTML Element: Employee Data Summary Container Div
+  const divDataSummary = document.createElement("div");  // Creates new <div> Element
+  const referenceNode = document.querySelector('#cardfooter');  // Finds existing Element ID to which to Append
+  referenceNode.after(divDataSummary);  // Appends new <div> to identified Element ID
+  divDataSummary.setAttribute("class", "summary");  // Assigns Class to <div> Element
+  divDataSummary.setAttribute("id", "dataSummary");  // Assigns ID to <div> Element
 
-  // HTML Element: Sum of Employee Salaries
-  const paraSumSalary = document.createElement("p");  // Creates new <p> Element
-  const sumSalaryNode = document.createTextNode(sumSalaryOutput);  // Creates Text Node for paraSumSalary
-  paraSumSalary.appendChild(sumSalaryNode);  // Appends Text Node to <p> Element
-  const sumSalaryPara = document.getElementById("calcOutput");  // Finds existing Element to which to Append
-  sumSalaryPara.appendChild(paraSumSalary);  // Appends new Element to existing Element
 
-  // HTML Element: Average Employee Salary
+  // Create HTML Element: Employee Data Summary Header
+  const headDataSummary = document.createElement("h2");  // Creates new <h2> Element
+  const headTitleNode = document.createTextNode("Employee Data Summary");  // Creates Text Node for new <h2> with Text
+  headDataSummary.append(headTitleNode);  // Appends Text Node to <h2> Element
+  const divDataSummaryNew = document.getElementById("dataSummary");  // Finds existing Element ID to which to Append
+  divDataSummaryNew.appendChild(headDataSummary); // Appends new <h2> to existing <div> Element
+  headDataSummary.setAttribute("id", "headerDataSummary");
+  
+  const refDataSumHeaderNode = document.querySelector('#headerDataSummary'); // Identifies existing Header Element ID to which to Append
+
+
+  // Create HTML Element: Average Employee Salary
+  const divAvgSalary = document.createElement("div");  // Create new Container <div> Element
+  refDataSumHeaderNode.after(divAvgSalary); // Appends new <div> to identified Element ID
+  divAvgSalary.setAttribute("class", "output");
+  divAvgSalary.setAttribute("id", "divAvgSalary")
+
+  const headAvgSalary = document.createElement("h3"); // Creates new <h3> Element
   const paraAvgSalary = document.createElement("p");  // Creates new <p> Element
-  const avgSalaryNode = document.createTextNode(avgSalaryOuput);  // Creates Text Node for paraAvgSalary
-  paraAvgSalary.appendChild(avgSalaryNode);  // Appends Text Node to <p> Element
-  const avgSalaryPara = document.getElementById("calcOutput");  // Finds existing Element to which to Append
+
+  const headAvgSalaryNode = document.createTextNode(avgSalaryTitle)  // Creates Text Node for paraSumSalary
+  const paraAvgSalaryNode = document.createTextNode(avgSalary);  // Creates Text Node for paraAvgSalary
+
+  headAvgSalary.append(headAvgSalaryNode);  // Appends Text Node to <p> Element
+  paraAvgSalary.appendChild(paraAvgSalaryNode);  // Appends Text Node to <p> Element
+
+  const avgSalaryHead = document.getElementById("divAvgSalary");  // Finds existing Element to which to Append
+  const avgSalaryPara = document.getElementById("divAvgSalary");  // Finds existing Element to which to Append
+
+  avgSalaryHead.appendChild(headAvgSalary);  // Appends new Element to existing Element
   avgSalaryPara.appendChild(paraAvgSalary);  // Appends new Element to existing Element
 
-// populateEmpArray()
-// displayAverageSalary(employeesArray)
 
+  // Create HTML Element: Sum of Employee Salaries
+  const divSumSalary = document.createElement("div");  // Create new Container <div> Element
+  refDataSumHeaderNode.after(divSumSalary); // Appends new <div> to identified Element ID
+  divSumSalary.setAttribute("class", "output");
+  divSumSalary.setAttribute("id", "divSumSalary")
+
+  const headSumSalary = document.createElement("h3"); // Creates new <h3> Element
+  const paraSumSalary = document.createElement("p");  // Creates new <p> Element
+
+  const headSumSalaryNode = document.createTextNode(sumSalaryTitle)  // Creates Text Node for paraSumSalary
+  const paraSumSalaryNode = document.createTextNode(sumSalaryFormatted);  // Creates Text Node for paraSumSalary
+  
+  headSumSalary.appendChild(headSumSalaryNode);  // Appends Text Node to <p> Element
+  paraSumSalary.appendChild(paraSumSalaryNode);  // Appends Text Node to <p> Element
+  
+  const sumSalaryHead = document.getElementById("divSumSalary"); // Finds existing Element to which to Append
+  const sumSalaryPara = document.getElementById("divSumSalary");  // Finds existing Element to which to Append
+  
+  sumSalaryHead.appendChild(headSumSalary);  // Appends new Element to existing Element
+  sumSalaryPara.appendChild(paraSumSalary);  // Appends new Element to existing Element
+
+
+  // Create HTML Element: Count of Employee Salaries
+  const divCountSalary = document.createElement("div");  // Create new Container <div> Element
+  refDataSumHeaderNode.after(divCountSalary); // Appends new <div> to identified Element ID
+  divCountSalary.setAttribute("class", "output");
+  divCountSalary.setAttribute("id", "divCountSalary")
+
+  const headCountSalary = document.createElement("h3"); // Creates new <h3> Element
+  const paraCountSalary = document.createElement("p");  // Creates new <p> Element
+
+  const headCountSalaryNode = document.createTextNode(countSalaryTitle)  // Creates Text Node for Function Variable, countSalaryTitle
+  const paraCountSalaryNode = document.createTextNode(countSalaries);  // Creates Text Node for Function Variable, countSalaries
+  
+  headCountSalary.appendChild(headCountSalaryNode);  // Appends Text Node to <h3> Element
+  paraCountSalary.appendChild(paraCountSalaryNode);  // Appends Text Node to <p> Element
+
+  const countSalaryHead = document.getElementById("divCountSalary");  // WAS dataSummary WAS calcOutput Finds existing Element ID to which to Append
+  const countSalaryPara = document.getElementById("divCountSalary");  // WAS dataSummary WAS calcOutput Finds existing Element ID to which to Append
+  
+  countSalaryHead.appendChild(headCountSalary);  // Appends new Element to existing Element
+  countSalaryPara.appendChild(paraCountSalary);  // Appends new Element to existing Element
 }
 
+
 // Select a random employee
+// TODO: Select and display a random employee
 const getRandomEmployee = function(employeesArray) {
-  // TODO: Select and display a random employee
 
   const randomEmployee = Math.floor(Math.random() * employeesArray.length);
+  randomEmpOutput = `Congratulations to ${employeesArray[randomEmployee].firstName} ${employeesArray[randomEmployee].lastName}, our random drawing winner!`;
+  // Console Log Output
+  console.log(randomEmpOutput);
 
-  console.log(`Congratulations to ${employeesArray[randomEmployee].firstName} ${employeesArray[randomEmployee].lastName}, our random drawing winner!`);
+
+  // Create HTML Element: Random Employee Container Div
+  const divRandomEmp = document.createElement("div");  // Creates new <div> Element
+  const referenceNode = document.querySelector('#carddiv');  // Finds existing Element ID to which to Append
+  referenceNode.after(divRandomEmp);  // Appends new <div> to identified Element ID
+  divRandomEmp.setAttribute("class", "randonemp");  // Assigns Class to Element
+  divRandomEmp.setAttribute("id", "randomEmp");  // Assigns ID to Element
+
+
+  // Create HTML Element: Random Employee Header
+  const headRandomEmp = document.createElement("h2");  // Creates new <h2> Element
+  const headEmpNode = document.createTextNode("Random Employee Winner!");  // Creates Text Node for new <h2> with Text
+  headRandomEmp.append(headEmpNode);  // Appends Text Node to <h2> Element
+  const divRandomEmpNew = document.getElementById("randomEmp");  // Finds existing Element ID to which to Append
+  divRandomEmpNew.appendChild(headRandomEmp); // Appends new <h2> to existing <div> Element
+  headRandomEmp.setAttribute("id", "headerRandomEmp");
+  
+  const refRandomEmpHeader = document.querySelector('#headerRandomEmp'); // Identifies existing Header Element ID to which to Append
+
+  // Create HTML Element: Random Employee Winner
+  const paraRandomEmp = document.createElement("p");  // Create new Container <p> Element
+  // paraRandomEmp.setAttribute("class", "output");  // Assigns Class to Element
+
+  const paraRandomEmpNode = document.createTextNode(randomEmpOutput);  // Creates Text Node for paraAvgSalary
+
+  paraRandomEmp.appendChild(paraRandomEmpNode);  // Appends Text Node to <p> Element
+
+  const randomEmpPara = document.getElementById("headerRandomEmp");  // Finds existing Element to which to Append
+
+  randomEmpPara.appendChild(paraRandomEmp);  // Appends new Element to existing Element
 }
 
 

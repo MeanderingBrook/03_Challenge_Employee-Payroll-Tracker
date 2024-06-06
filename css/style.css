@@ -86,6 +86,7 @@ tbody tr:nth-child(even) {
 }
 
 .card-footer::after {
+  margin-bottom: 40px;
   content: " ";
   display: block;
   clear: both;
@@ -131,7 +132,11 @@ button[disabled] {
 }
 
 
-.output {
+/* JavaScript-Generated HTML Styles */
+
+.summary {
+  /* display: flex; */
+  flex-direction: row;
   background-color: aliceblue;
   border-radius: 5px;
   border-width: 1px;
@@ -140,13 +145,90 @@ button[disabled] {
   font-size: 18px;
   margin: 0 auto;
   max-width: 800px;
-  padding: 30px 40px;
+  padding-top: 10px; 
+  padding-bottom: 10px;
+  padding-left: 40px;
+  padding-right: 40px;
 }
 
-.output p {
+.summary h2 {
+  text-align: center;
+  color: rgb(0, 0, 64,.70);
+}
+
+.summary h3 {
+  /* text-align: center; */
+  color: rgb(0, 0, 64,.60);
+}
+
+.summary p {
+  display: flex;
+  flex-direction: column;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  margin-left: 40px;
+  padding-bottom: 10px;
   border-radius: 3px;
   border-width: 10px;
   border-color: darkblue;
-  font-weight: bold;
-  color: darkblue;
+  /* font-weight: bold; */
+  font-size: 20;
+  color: rgb(0, 0, 64,.60);
+}
+
+#calcOutput {
+  display: flex;
+  flex-direction: row;
+}
+
+.output {
+  display: flex;
+  flex-direction: row;
+  /* margin-top: 50px; */ /* DOESNT WORK!!!!! */
+  background-color: rgb(247, 251, 255);
+  border-radius: 5px;
+  border-width: 1px;
+  /* border-color: black; */  /* DOESNT WORK!!!!! */
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
+  color: hsl(206, 17%, 28%);
+  font-size: 18px;
+  margin: 0 auto;
+  max-width: 800px;
+  padding-top: 5px; 
+  padding-bottom: 5px;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.randonemp {
+  /* display: flex; */
+  flex-direction: row;
+  background-color: rgb(196, 226, 252);
+  border-radius: 5px;
+  border-width: 1px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
+  color: hsl(206, 17%, 28%);
+  /* font-size: 18px; */
+  margin: 0 auto;
+  max-width: 800px;
+  padding-top: 10px; 
+  padding-bottom: 10px;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.randonemp p {
+  display: flex;
+  flex-direction: column;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  /* margin-left: 40px; */
+  background-color: rgb(242, 245, 248);
+  padding-bottom: 10px;
+  border-radius: 3px;
+  border-width: 10px;
+  border-color: darkblue;
+  /* font-weight: bold; */
+  font-size: 12;
+  color: rgb(0, 0, 64,.60);
 }
