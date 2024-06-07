@@ -23,9 +23,9 @@ No Installation of the Employee Payroll Tracker is required; the web-app is (nom
 The Employee Payroll Tracker is "intended" for use by Payroll Managers to input, and immediately perform basic analysis upon simple Employee Data (i.e., Name, Salary).
 
 
-## Credits
+## Credits and Code Source
 
-N / A
+Code, where referenced from a third-party Source, is noted in Comments accompanying the relevant Code lines (e.g., script.js, Line 26)
 
 
 ## License
