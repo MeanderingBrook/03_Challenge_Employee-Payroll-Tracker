@@ -1,57 +1,3 @@
-/* Proper CSS Property Order */
-/* selector {
-  /* Content
-  content: ;
-
-  /* Position and Layout
-  position: ;
-  layout: ;
-  top / bottom / left / right: ;
-  flex-: ;
-  float: ;
-  clear: ;
-
-  /* Display and Visibility
-  display: ;
-  opacity: ;
-  transform: ;
-
-  /* Clipping
-  overflow: ;
-  clip: ;
-
-  /* Animation
-  animation: ;
-  transition: ;
-
-  /* Box Model (Outside-In)
-  margin: ;
-  box-shadow: ;
-  border: ;
-  border-radius: ;
-  box-sizing: ;
-  width: ;
-  height: ;
-  padding: ;
-
-  /* Background
-  background: ;
-  cursor: ;
-
-  /* Typography
-  font-size: ;
-  line-height: ;
-  font-family: ;
-  font-style: ;
-  text-align: ;
-  text-transform: ;
-  color: ;
-
-  /* Pseudo-Classes and -Elements
-  :hover;
-  :before / :after;
-} */
-
 *,
 *::before,
 *::after {
@@ -283,3 +229,59 @@ button[disabled] {
   text-align: center;
   color: rgb(0, 0, 64,.60);
 }
+
+
+/* Reference */
+/* Proper CSS Property Order */
+/* selector {
+  /* Content
+  content: ;
+
+  /* Position and Layout
+  position: ;
+  layout: ;
+  top / bottom / left / right: ;
+  flex-: ;
+  float: ;
+  clear: ;
+
+  /* Display and Visibility
+  display: ;
+  opacity: ;
+  transform: ;
+
+  /* Clipping
+  overflow: ;
+  clip: ;
+
+  /* Animation
+  animation: ;
+  transition: ;
+
+  /* Box Model (Outside-In)
+  margin: ;
+  box-shadow: ;
+  border: ;
+  border-radius: ;
+  box-sizing: ;
+  width: ;
+  height: ;
+  padding: ;
+
+  /* Background
+  background: ;
+  cursor: ;
+
+  /* Typography
+  font-size: ;
+  line-height: ;
+  font-family: ;
+  font-style: ;
+  text-align: ;
+  text-transform: ;
+  color: ;
+
+  /* Pseudo-Classes and -Elements
+  :hover;
+  :before / :after;
+} */
