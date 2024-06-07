@@ -81,6 +81,6 @@ Console Test Scripts:
 
 ![Employee Payroll Tracker: Populated Tracker Screenshot] (/assets/images/Employee Payroll Tracker_Screenshot-01.png "Populated Tracker Screenshot")
 
-![Employee Payroll Tracker: Populated Tracker Screenshot with Console Log (1 of 2)] (/assets/images/Employee Payroll Tracker_Screenshot-02.png "Populated Tracker Screenshot with Console Log")
+![Employee Payroll Tracker: Populated Tracker Screenshot with Console Log (1 of 2)] (/assets/images/Employee Payroll Tracker_Screenshot-02.png?raw=true "Populated Tracker Screenshot with Console Log")
 
-![Employee Payroll Tracker: Populated Tracker Screenshot with Console Log (2 of 2)] (/assets/images/Employee Payroll Tracker_Screenshot-02.png "Populated Tracker Screenshot with Console Log")
+![Employee Payroll Tracker: Populated Tracker Screenshot with Console Log (2 of 2)] (/assets/images/Employee Payroll Tracker_Screenshot-02.png?raw=true "Populated Tracker Screenshot with Console Log")
