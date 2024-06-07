@@ -1,4 +1,4 @@
-# Full-Stack Developer Bootcamp Module 03 - Challenge: App Code Completion > Employee Payroll Tracker Starter Code
+# Full-Stack Developer Bootcamp Module 03 - Challenge: App Code Completion > Employee Payroll Tracker Application
 
 
 ## Description
