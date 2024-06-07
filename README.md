@@ -1,10 +1,12 @@
 # Full-Stack Developer Bootcamp Module 03 - Challenge: App Code Completion > Employee Payroll Tracker Starter Code
 
+
 ## Description
 
 The Employee Payroll Tracker is a web-based, browser-accessible application that enables a Payroll Manager (User) to view and manage Employee Payroll Data. 
 The app dynamically updates the web-app HTML and CSS code to ingest, analyze, and report User-input data, using JavaScript code. 
 The web-app will resolve on multiple screen sizes, but does not cache or store User-input data across sessions (i.e., User-input data is deleted when a User session ends).
+
 
 ## Table of Contents (Optional)
 
@@ -75,6 +77,11 @@ Console Test Scripts:
   populateEmpArray(): Populates sample data to app for testing
   displayAverageSalary(employeesArray): Manually invokes analytic function
   getRandomEmployee(employeesArray): Manually invoke feature function
+
+
+## GitHub Pages Location
+
+https://meanderingbrook.github.io/03_Challenge_Employee-Payroll-Tracker/
 
 
 ## Application Screenshots
