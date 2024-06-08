@@ -6,17 +6,14 @@
 // Note to Evalators: 
 // The given code that includes an octothorpe (#) in assignment of addEmployeeBtn (Line 32) prevents the button from
 // invoking the trackEmployeeData (Line 341)
-// A While Loop seems inappropriate for the requested functionality, 
-// and typical attributes of While Loops, such as incrementing counters against a limit, don't have a useful place.
-// (Were I not working from given code, and the Technical Requirement to use a While Loop, I would have opted for
-// a For Loop, or Do While Loop, or a simply ingested the User Input directly into the temporary Employee Object
-// with an Error Check before pushing the values to employeesArray, or... etc.)
-// Instead of an incrementing counter (there's nothing to count in this Use Case) I opted for a binary variable
-// to determine whether an Employee Record is complete or not (i.e., First Name, Last Name, and Salary have been input),
-// recognizing that this the framework itself is kludgey.
+// A While Loop seems incongruous for the requested functionality, 
+// and typical attributes of While Loops, such as incrementing counters against a limit, don't seem to apply.
+// Consequently, I opted for a binany While condition (Employee Profile is incomplete / complete: First Name, Last Name, and Salary have / not been input)
+// (Were the Technical Requirements not specific, I would have opted for
+// a For Loop, ingested the User Input directly into the temporary Employee Object.)
 // Additionally, I opted for an Element-level Function for evaluating Salary counts, rather than an Object-level Function,
-// since it is plausible under mor robust Use Cases that Employee data other than Salary might be entered, while omitting Salary itself;
-// In other circumstances, I'd ommit zero-dollar Salaries since those will skew results, but the Challenge Requirements explicitly include them
+// since it is plausible under other robust Use Cases that Employee data other than Salary might be entered, while omitting Salary itself;
+// In other circumstances, I'd likely ommit zero-dollar Salaries since those will skew results
 // Additional IDs were added to index.html Elements to allow for additional JavaScript-created Elements
 
 
